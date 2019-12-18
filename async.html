@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    async function getName(name){
+      const symbol = await getStockSymbol(name);
+      const stockPrice = await getStockPrice(symbol);
+      return stockPrice;
+    }
+    getName('hh').then(function(result){
+      console.log(result);
+    })
+
+    function getStockSymbol(item){
+      console.log('getStockSymbol'+ item);
+      return item;
+    }
+
+    function getStockPrice(item){
+      console.log('getStockPrice'+ item);
+      return item;
+    }
+
+    // async function timeout(ms){
+    //   await new Promise((resolve) => {
+    //     setTimeout(resolve,ms);
+    //   });
+    // }
+    // async function asyncPrint(value,ms){
+    //   await timeout(ms);
+    //   console.log(value);
+    // }
+    // asyncPrint('hello world',50);
+
+    // async function f(){
+    //   return 'hello world';
+    // }
+    // f().then(v => console.log(v));
+  </script>
+</body>
+</html>
+

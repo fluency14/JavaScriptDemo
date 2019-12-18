@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <button style="width: 100px;height: 100px;border: 1px solid black;text-align: center;line-height: 100px;" onmousemove ="throttle(conSole,3000)">输出12345</button>
+  <!-- <div style="width: 100px;height: 100px;border: 1px solid black;text-align: center;line-height: 100px;" onmousemove="conSole()">输出12345</div> -->
+  <script>
+    function debounce(fn,delay){
+      let timer = null;
+      return function(){
+        if(timer){
+          clearTimeout(timer);
+          timer = setTimeout(fn,delay)
+        }else{
+          timer = setTimeout(fn,delay)
+        }
+      }()
+    }
+    function conSole(){
+      console.log('12345')
+    }
+    // function throttle(fn,delay){
+    //   let prev = new Date().getTime();
+    //   console.log('prev',prev)
+    //   return function(){
+    //     let now = new Date().getTime();
+    //     console.log('now',now)
+    //     if( now - prev >= delay){
+    //       fn.apply(this,arguments);
+    //       prev = new Date().getTime();
+    //       console.log('next prev',prev)
+    //     }
+    //   }()
+    // }
+    function throttle(fn,delay){
+      let timer = null;
+      return function(){
+        if(!timer){
+          timer = setTimeout(function(){
+            fn.apply(this,arguments);
+            timer = null;
+          },delay)
+        }
+      }()
+    }
+  </script>
+</body>
+</html>
